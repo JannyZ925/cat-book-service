@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域测试页面</title>
+    <script src="./js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <h1>跨域测试</h1>
+    <div>
+        <input type="button" onclick="mySubmit()" value=" 发送跨域请求 ">
+    </div>
+    <script>
+        function mySubmit() {
+            // 发送跨域请求
+            $.ajax({
+                url: "http://localhost:9090/user/list",
+                type: "POST",
+                data: {
+                    pageNum: 2,
+                    pageSize: 2
+                },
+                success: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

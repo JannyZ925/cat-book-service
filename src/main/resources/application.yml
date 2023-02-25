@@ -1,0 +1,48 @@
+# 端口号
+server:
+  port: 9090
+# 应用名称
+spring:
+  application:
+    name: cat-book-service
+  # 数据库数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_user?serverTimezone=UTC
+    username: root
+    password: root
+  # 响应前端的日期格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  ## 启用热部署
+  devtools:
+    restart:
+      enabled: true
+# mybatis配置
+mybatis:
+  # mybatis 实体类起别名
+  type-aliases-package: com.ccsu.catbookservice.entity
+  # 指定映射文件
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    # 下划线->驼峰命名 user_name -> userName
+    map-underscore-to-camel-case: true
+
+## 打印sql日志
+logging:
+  level:
+    com:
+      ccsu:
+        catbookservice:
+          dao: debug
+
+## pagehelper
+pagehelper:
+  helper-dialect: mysql
+  # pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
+  reasonable: true
+
+
+
+
